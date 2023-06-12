@@ -14,7 +14,7 @@ const CategoryCard = () => {
                 <figure className='relative h-0 pb-[56.25%] overflow-hidden'>
                   <img
                     className='absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out'
-                    src='https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80'
+                    src='https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_1280.jpg'
                     width='320'
                     height='180'
                     alt='Course'
@@ -22,7 +22,7 @@ const CategoryCard = () => {
                 </figure>
               </a>
 
-              <div className='flex-grow flex flex-col p-5'>
+              <div className='flex-grow flex flex-col p-5 text-start'>
                 <div className='flex-grow'>
                   <header className='mb-3'>
                     <a

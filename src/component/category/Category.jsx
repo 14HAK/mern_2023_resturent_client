@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import CategoryCard from '../categoryCard/CategoryCard';
+import CategoryCard from './categoryCard/CategoryCard';
 
 const Category = () => {
   return (

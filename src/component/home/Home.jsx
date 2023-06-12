@@ -8,6 +8,7 @@ const Home = () => {
       <section className='text-center'>
         <Category></Category>
       </section>
+      <SectionTitle title={'popular manu'}></SectionTitle>
     </>
   );
 };
