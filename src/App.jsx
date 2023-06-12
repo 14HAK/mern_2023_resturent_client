@@ -6,9 +6,7 @@ const App = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <div className='h-[33.6rem] bg-slate-300 overflow-y-auto'>
-        <Outlet></Outlet>
-      </div>
+      <Outlet></Outlet>
       <Footer></Footer>
     </div>
   );
