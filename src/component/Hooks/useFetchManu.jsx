@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 const useFetchManu = () => {
   const [data, setData] = useState();
   useEffect(() => {
-    fetch('menu.json')
+    fetch('http://localhost:3000/manu_products')
       .then((res) => res.json())
       .then((getData) => setData(getData));
   }, []);
