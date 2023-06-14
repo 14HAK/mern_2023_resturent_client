@@ -1,6 +1,11 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { MyContext } from '../../context/Context';
 
 const Navbar = () => {
+  const { user } = useContext(MyContext);
+  console.log(user);
+
   return (
     <div className='p-2 bg-slate-700 text-white '>
       <ul className='flex justify-center items-center gap-5 '>
@@ -22,6 +27,36 @@ const Navbar = () => {
         <li className='hover:bg-yellow-800'>
           <Link to={'/our_shop'}>OUR-SHOP</Link>
         </li>
+        <li className='hover:bg-yellow-800'>
+          <Link to={'/signin'}>SIGN-IN</Link>
+        </li>
+        <li className='hover:bg-yellow-800'>
+          <Link to={'/signup'}>SIGN-UP</Link>
+        </li>
+        {user ? (
+          <>
+            <span className='flex gap-2 justify-between items-center'>
+              <button className='text-slate-600 rounded-md px-3 hover:text-white hover:bg-gray-500 py-1 bg-white font-semibold'>
+                SIGN IN
+              </button>
+              <span className='avatar placeholder'>
+                <span className='text-neutral-content rounded-full w-12'>
+                  <img
+                    className='rounded-full'
+                    src='https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg'
+                    alt=''
+                  />
+                </span>
+              </span>
+            </span>
+          </>
+        ) : (
+          <>
+            <button className='text-slate-600 rounded-md px-3 hover:text-white hover:bg-gray-500 py-1 bg-white font-semibold'>
+              SIGN OUT
+            </button>
+          </>
+        )}
       </ul>
     </div>
   );

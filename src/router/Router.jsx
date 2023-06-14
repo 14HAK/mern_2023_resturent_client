@@ -6,6 +6,8 @@ import ContactUs from '../component/contactUs/ContactUs';
 import DashBoard from '../component/dashboard/DashBoard';
 import OurManu from '../component/ourManu/OurManu';
 import OurShop from '../component/ourShop/OurShop';
+import Signin from '../component/signin/Signin';
+import Signup from '../component/signup/Signup';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
       {
         path: '/our_shop',
         element: <OurShop></OurShop>,
+      },
+      {
+        path: '/signin',
+        element: <Signin></Signin>,
+      },
+      {
+        path: '/signup',
+        element: <Signup></Signup>,
       },
     ],
   },
