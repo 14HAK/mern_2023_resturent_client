@@ -1,9 +1,15 @@
 import { useContext } from 'react';
 import { MyContext } from '../../context/Context';
 import { useForm } from 'react-hook-form';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Signin = () => {
   const { setUser, SignInWithEmailPassword } = useContext(MyContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location?.state?.from?.pathname || '/';
+
   const {
     register,
     handleSubmit,
@@ -15,6 +21,7 @@ const Signin = () => {
       .then((result) => {
         setUser(result.user);
         reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error?.massage);

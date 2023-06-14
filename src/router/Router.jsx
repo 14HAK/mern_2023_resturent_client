@@ -9,6 +9,7 @@ import OurShop from '../component/ourShop/OurShop';
 import Signin from '../component/signin/Signin';
 import Signup from '../component/signup/Signup';
 import Demo from '../component/demo/Demo';
+import PrivateRoute from '../Private/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -49,7 +50,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/demo',
-        element: <Demo></Demo>,
+        element: (
+          <PrivateRoute>
+            <Demo></Demo>
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -12,6 +12,7 @@ export const MyContext = createContext();
 const auth = getAuth(app);
 const Context = ({ children }) => {
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
 
   //sign up user email and pass
   const userWithEmailPassword = (email, password) => {
@@ -32,6 +33,7 @@ const Context = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        setLoading(false);
       } else {
         setUser();
       }
@@ -45,6 +47,7 @@ const Context = ({ children }) => {
     user,
     setUser,
     logOut,
+    loading,
     userWithEmailPassword,
     SignInWithEmailPassword,
   };

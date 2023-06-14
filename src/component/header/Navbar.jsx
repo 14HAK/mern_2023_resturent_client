@@ -32,6 +32,9 @@ const Navbar = () => {
           <Link to={'/our_manu'}>OUR-MANU</Link>
         </li>
         <li className='hover:bg-yellow-800'>
+          <Link to={'/demo'}>DEMO</Link>
+        </li>
+        <li className='hover:bg-yellow-800'>
           <Link to={'/our_shop'}>OUR-SHOP</Link>
         </li>
         {user ? (
