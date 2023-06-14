@@ -8,6 +8,7 @@ import OurManu from '../component/ourManu/OurManu';
 import OurShop from '../component/ourShop/OurShop';
 import Signin from '../component/signin/Signin';
 import Signup from '../component/signup/Signup';
+import Demo from '../component/demo/Demo';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <Signup></Signup>,
+      },
+      {
+        path: '/demo',
+        element: <Demo></Demo>,
       },
     ],
   },

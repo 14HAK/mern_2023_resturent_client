@@ -1,6 +1,29 @@
+import { useContext } from 'react';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { MyContext } from '../../context/Context';
 
 const Signup = () => {
+  const { userWithEmailPassword, setUser } = useContext(MyContext);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    userWithEmailPassword(data.email, data.password)
+      .then((result) => {
+        setUser(result.user);
+        reset();
+      })
+      .catch((error) => {
+        console.log(error.massage);
+      });
+  };
+
   return (
     <div>
       <div className='hero min-h-screen bg-base-200'>
@@ -13,29 +36,34 @@ const Signup = () => {
               et a id nisi.
             </p>
           </div>
-          <form className='card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100'>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className='card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100'
+          >
             <div className='card-body'>
               <div className='form-control'>
                 <label className='label'>
                   <span className='label-text'>Email</span>
                 </label>
                 <input
-                  type='email'
-                  placeholder='email'
-                  required
                   className='input input-bordered'
+                  {...register('email', { required: true })}
                 />
+                <small className='text-red-600'>
+                  {errors.email && <span>This field is required</span>}
+                </small>
               </div>
               <div className='form-control'>
                 <label className='label'>
                   <span className='label-text'>Password</span>
                 </label>
                 <input
-                  type='password'
-                  placeholder='password'
-                  required
                   className='input input-bordered'
+                  {...register('password', { required: true })}
                 />
+                <small className='text-red-600'>
+                  {errors.password && <span>This field is required</span>}
+                </small>
                 <label className='label'>
                   <button className='label-text-alt link link-hover'>
                     <Link to={'/signin'}>already have an account?</Link>
