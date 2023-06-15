@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const Signin = () => {
   const { setUser, SignInWithEmailPassword } = useContext(MyContext);
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -16,6 +17,7 @@ const Signin = () => {
     reset,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
     SignInWithEmailPassword(data.email, data.password)
       .then((result) => {

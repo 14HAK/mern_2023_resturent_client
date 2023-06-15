@@ -10,6 +10,7 @@ import Signin from '../component/signin/Signin';
 import Signup from '../component/signup/Signup';
 import Demo from '../component/demo/Demo';
 import PrivateRoute from '../Private/PrivateRoute';
+import Cart from '../component/cart/Cart';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: '/our_shop',
         element: <OurShop></OurShop>,
+      },
+      {
+        path: '/cart',
+        element: <Cart></Cart>,
       },
       {
         path: '/signin',

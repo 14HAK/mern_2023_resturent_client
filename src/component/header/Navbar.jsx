@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { MyContext } from '../../context/Context';
+import { HiOutlineShoppingCart } from 'react-icons/hi';
 
 const Navbar = () => {
   const { user, logOut, setUser } = useContext(MyContext);
@@ -36,6 +37,14 @@ const Navbar = () => {
         </li>
         <li className='hover:bg-yellow-800'>
           <Link to={'/our_shop'}>OUR-SHOP</Link>
+        </li>
+        <li className='relative mx-5'>
+          <Link to={'/cart'}>
+            <span className='text-5xl'>
+              <HiOutlineShoppingCart></HiOutlineShoppingCart>
+              <div className='badge absolute top-0 font-mono left-5'>+99</div>
+            </span>
+          </Link>
         </li>
         {user ? (
           <></>
