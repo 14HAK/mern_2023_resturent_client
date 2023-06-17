@@ -3,7 +3,6 @@ import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
 import Home from '../component/home/Home';
 import ContactUs from '../component/contactUs/ContactUs';
-import DashBoard from '../component/dashboard/DashBoard';
 import OurManu from '../component/ourManu/OurManu';
 import OurShop from '../component/ourShop/OurShop';
 import Signin from '../component/signin/Signin';
@@ -11,6 +10,7 @@ import Signup from '../component/signup/Signup';
 import Demo from '../component/demo/Demo';
 import PrivateRoute from '../Private/PrivateRoute';
 import Cart from '../component/cart/Cart';
+import Dashboard from '../Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -28,10 +28,6 @@ const router = createBrowserRouter([
       {
         path: '/contact_us',
         element: <ContactUs></ContactUs>,
-      },
-      {
-        path: '/dashboard',
-        element: <DashBoard></DashBoard>,
       },
       {
         path: '/our_manu',
@@ -60,6 +56,20 @@ const router = createBrowserRouter([
             <Demo></Demo>
           </PrivateRoute>
         ),
+      },
+    ],
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: '/dashboard',
+        element: <Cart></Cart>,
+      },
+      {
+        path: '/dashboard/cart',
+        element: <Cart></Cart>,
       },
     ],
   },

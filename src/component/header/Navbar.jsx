@@ -39,7 +39,7 @@ const Navbar = () => {
           <Link to={'/our_shop'}>OUR-SHOP</Link>
         </li>
         <li className='relative mx-5'>
-          <Link to={'/cart'}>
+          <Link to={'/dashboard/cart'}>
             <span className='text-5xl'>
               <HiOutlineShoppingCart></HiOutlineShoppingCart>
               <div className='badge absolute top-0 font-mono left-5'>
