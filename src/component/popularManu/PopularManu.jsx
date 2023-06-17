@@ -3,7 +3,6 @@ import ManuCard from './manuCard/ManuCard';
 
 const PopularManu = () => {
   const [data] = useFetchManu();
-
   const popularData = data?.filter((item) => item?.category === 'popular');
   return (
     <div>

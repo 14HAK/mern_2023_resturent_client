@@ -1,4 +1,16 @@
 const ManuCard = ({ data }) => {
+  const handleCartItem = (item) => {
+    fetch('http://localhost:3000/client/cart', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(item),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
+
   return (
     <div>
       <div className='flex justify-center border border-y-slate-100 items-center bg-blue-lightest rounded-lg'>
@@ -21,7 +33,10 @@ const ManuCard = ({ data }) => {
               <div className='flex items-center mt-4'></div>
             </div>
             <div className='bg-grey-lighter p-3 flex items-center justify-between transition hover:bg-grey-light '>
-              <button className='py-1 font-semibold text-base-200 px-10 bg-slate-400 cursor-pointer hover:bg-slate-700 hover:text-white rounded-md'>
+              <button
+                onClick={() => handleCartItem(data)}
+                className='py-1 font-semibold text-base-200 px-10 bg-slate-400 cursor-pointer hover:bg-slate-700 hover:text-white rounded-md'
+              >
                 Add Cart
               </button>
             </div>

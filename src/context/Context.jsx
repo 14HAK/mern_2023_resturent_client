@@ -8,11 +8,12 @@ import {
 } from 'firebase/auth';
 import app from '../firebaseConfig/firebase.config';
 
-export const MyContext = createContext();
+export const MyContext = createContext(null);
 const auth = getAuth(app);
 const Context = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
+  const [cart, setCart] = useState();
 
   //sign up user email and pass
   const userWithEmailPassword = (email, password) => {
@@ -43,6 +44,13 @@ const Context = ({ children }) => {
     };
   }, []);
 
+  //get all cart data
+  useEffect(() => {
+    fetch('http://localhost:3000/client/cart')
+      .then((res) => res.json())
+      .then((data) => setCart(data));
+  }, []);
+
   const contextData = {
     user,
     setUser,
@@ -50,6 +58,7 @@ const Context = ({ children }) => {
     loading,
     userWithEmailPassword,
     SignInWithEmailPassword,
+    cart,
   };
 
   return (

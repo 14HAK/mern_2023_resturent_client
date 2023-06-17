@@ -4,7 +4,7 @@ import { MyContext } from '../../context/Context';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 
 const Navbar = () => {
-  const { user, logOut, setUser } = useContext(MyContext);
+  const { user, logOut, setUser, cart } = useContext(MyContext);
 
   const handleLogOut = () => {
     logOut()
@@ -42,7 +42,9 @@ const Navbar = () => {
           <Link to={'/cart'}>
             <span className='text-5xl'>
               <HiOutlineShoppingCart></HiOutlineShoppingCart>
-              <div className='badge absolute top-0 font-mono left-5'>+99</div>
+              <div className='badge absolute top-0 font-mono left-5'>
+                +{cart?.length}
+              </div>
             </span>
           </Link>
         </li>

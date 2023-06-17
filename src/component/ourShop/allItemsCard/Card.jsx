@@ -1,4 +1,16 @@
 const Card = ({ item }) => {
+  const handleCartItem = (data) => {
+    fetch('http://localhost:3000/client/cart', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
+
   return (
     <>
       <>
@@ -47,6 +59,7 @@ const Card = ({ item }) => {
                       Preview
                     </button>
                     <button
+                      onClick={() => handleCartItem(item)}
                       className='font-semibold text-sm inline-flex items-center justify-center px-3 py-1.5 border border-transparent rounded leading-5 shadow-sm transition duration-150 ease-in-out bg-indigo-500 focus:outline-none focus-visible:ring-2 hover:bg-indigo-600 text-white'
                       href='#0'
                     >
