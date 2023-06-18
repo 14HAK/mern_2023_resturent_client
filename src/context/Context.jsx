@@ -9,11 +9,13 @@ import {
 import app from '../firebaseConfig/firebase.config';
 
 export const MyContext = createContext(null);
-const auth = getAuth(app);
+
 const Context = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState();
+
+  const auth = getAuth(app);
 
   //sign up user email and pass
   const userWithEmailPassword = (email, password) => {
@@ -42,14 +44,18 @@ const Context = ({ children }) => {
     return () => {
       unSubscribe();
     };
-  }, []);
+  }, [auth]);
 
   //get all cart data
   useEffect(() => {
-    fetch('http://localhost:3000/client/cart')
-      .then((res) => res.json())
-      .then((data) => setCart(data));
-  }, []);
+    if (user) {
+      fetch(`http://localhost:3000/client/cart?user=${user?.email}`)
+        .then((res) => res.json())
+        .then((data) => setCart(data));
+    } else {
+      setCart(null);
+    }
+  }, [user]);
 
   const contextData = {
     user,

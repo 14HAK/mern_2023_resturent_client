@@ -11,6 +11,11 @@ import Demo from '../component/demo/Demo';
 import PrivateRoute from '../Private/PrivateRoute';
 import Cart from '../component/cart/Cart';
 import Dashboard from '../Dashboard';
+import Reservation from '../component/reservation/Reservation';
+import PaymentHistory from '../component/paymentHistory/PaymentHistory';
+import AddReview from '../component/addReview/AddReview';
+import MyBooking from '../component/myBooking/MyBooking';
+import UserHome from '../component/userHome/UserHome';
 
 const router = createBrowserRouter([
   {
@@ -68,8 +73,28 @@ const router = createBrowserRouter([
         element: <Cart></Cart>,
       },
       {
+        path: '/dashboard/userhome',
+        element: <UserHome></UserHome>,
+      },
+      {
+        path: '/dashboard/reservation',
+        element: <Reservation></Reservation>,
+      },
+      {
+        path: '/dashboard/paymenthistory',
+        element: <PaymentHistory></PaymentHistory>,
+      },
+      {
         path: '/dashboard/cart',
         element: <Cart></Cart>,
+      },
+      {
+        path: '/dashboard/addreview',
+        element: <AddReview></AddReview>,
+      },
+      {
+        path: '/dashboard/mybooking',
+        element: <MyBooking></MyBooking>,
       },
     ],
   },
