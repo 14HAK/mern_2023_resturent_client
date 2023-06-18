@@ -1,8 +1,7 @@
-import { useContext } from 'react';
-import { MyContext } from '../../context/Context';
+import useFetchCart from '../Hooks/useFetchCart';
 
 const Cart = () => {
-  const { cart } = useContext(MyContext);
+  const [, cart] = useFetchCart();
 
   return (
     <div>

@@ -1,24 +1,30 @@
 import { useContext } from 'react';
 import { MyContext } from '../../../context/Context';
+import useFetchCart from '../../Hooks/useFetchCart';
 
 const Card = ({ item }) => {
   const { user } = useContext(MyContext);
+  const [refetch] = useFetchCart();
 
-  const handleCartItem = (data) => {
+  const handleCartItem = (itemData) => {
     if (user) {
-      data['user'] = user.email;
+      delete itemData['_id'];
+      itemData['user'] = user?.email;
       fetch(`http://localhost:3000/client/cart`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(itemData),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+          if (data) {
+            refetch();
+          }
+        });
     }
   };
-
   return (
     <>
       <>

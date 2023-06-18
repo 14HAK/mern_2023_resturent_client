@@ -2,9 +2,11 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { MyContext } from '../../context/Context';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
+import useFetchCart from '../Hooks/useFetchCart';
 
 const Navbar = () => {
-  const { user, logOut, setUser, cart } = useContext(MyContext);
+  const { user, logOut, setUser } = useContext(MyContext);
+  const [refetch, cart] = useFetchCart();
 
   const handleLogOut = () => {
     logOut()

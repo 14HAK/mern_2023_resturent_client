@@ -13,7 +13,6 @@ export const MyContext = createContext(null);
 const Context = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
-  const [cart, setCart] = useState();
 
   const auth = getAuth(app);
 
@@ -47,15 +46,15 @@ const Context = ({ children }) => {
   }, [auth]);
 
   //get all cart data
-  useEffect(() => {
-    if (user) {
-      fetch(`http://localhost:3000/client/cart?user=${user?.email}`)
-        .then((res) => res.json())
-        .then((data) => setCart(data));
-    } else {
-      setCart(null);
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     fetch(`http://localhost:3000/client/cart?user=${user?.email}`)
+  //       .then((res) => res.json())
+  //       .then((data) => setCart(data));
+  //   } else {
+  //     setCart(null);
+  //   }
+  // }, [user]);
 
   const contextData = {
     user,
@@ -64,7 +63,6 @@ const Context = ({ children }) => {
     loading,
     userWithEmailPassword,
     SignInWithEmailPassword,
-    cart,
   };
 
   return (
