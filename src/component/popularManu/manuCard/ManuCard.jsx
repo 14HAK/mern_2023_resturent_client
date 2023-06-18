@@ -1,14 +1,23 @@
+import { useContext } from 'react';
+import { MyContext } from '../../../context/Context';
+
 const ManuCard = ({ data }) => {
+  const { user } = useContext(MyContext);
+  console.log(user);
+
   const handleCartItem = (item) => {
-    fetch('http://localhost:3000/client/cart', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(item),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    if (user) {
+      item['user'] = user.email;
+      fetch(`http://localhost:3000/client/cart`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(item),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    }
   };
 
   return (

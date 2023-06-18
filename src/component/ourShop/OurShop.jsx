@@ -1,3 +1,4 @@
+import Context from '../../context/Context';
 import useFetchManu from '../Hooks/useFetchManu';
 import SectionTitle from '../sectionTitle/SectionTitle';
 import Card from './allItemsCard/Card';

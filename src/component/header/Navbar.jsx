@@ -17,25 +17,25 @@ const Navbar = () => {
   return (
     <div className='p-2 bg-slate-700 text-white '>
       <ul className='flex justify-center items-center gap-5 '>
-        <li className='hover:bg-yellow-800 text-2xl'>
+        <li className=' text-2xl'>
           <Link to={'/'}>LOGO</Link>
         </li>
-        <li className='hover:bg-yellow-800'>
+        <li className='hover:underline'>
           <Link to={'/home'}>HOME</Link>
         </li>
-        <li className='hover:bg-yellow-800'>
+        <li className='hover:underline'>
           <Link to={'/contact_us'}>CONTACT-US</Link>
         </li>
-        <li className='hover:bg-yellow-800'>
+        <li className='hover:underline'>
           <Link to={'/dashboard'}>DASHBOARD</Link>
         </li>
-        <li className='hover:bg-yellow-800'>
+        <li className='hover:underline'>
           <Link to={'/our_manu'}>OUR-MANU</Link>
         </li>
-        <li className='hover:bg-yellow-800'>
+        <li className='hover:underline'>
           <Link to={'/demo'}>DEMO</Link>
         </li>
-        <li className='hover:bg-yellow-800'>
+        <li className='hover:underline'>
           <Link to={'/our_shop'}>OUR-SHOP</Link>
         </li>
         <li className='relative mx-5'>
@@ -52,10 +52,10 @@ const Navbar = () => {
           <></>
         ) : (
           <>
-            <li className='hover:bg-yellow-800'>
+            <li className='hover:underline'>
               <Link to={'/signin'}>SIGN-IN</Link>
             </li>
-            <li className='hover:bg-yellow-800'>
+            <li className='hover:underline'>
               <Link to={'/signup'}>SIGN-UP</Link>
             </li>
           </>
