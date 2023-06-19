@@ -3,8 +3,10 @@ import {
   FaCartPlus,
   FaHome,
   FaNewspaper,
+  FaPaperPlane,
   FaRegCalendarCheck,
   FaRegStar,
+  FaShoppingBag,
   FaWallet,
 } from 'react-icons/fa';
 import useFetchCart from './component/Hooks/useFetchCart';
@@ -77,6 +79,35 @@ const Dashboard = () => {
                     <FaRegCalendarCheck></FaRegCalendarCheck>
                   </span>{' '}
                   MY BOOKING
+                </Link>
+              </li>
+
+              <span className='h-[1px] w-full my-3 bg-white'></span>
+
+              <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
+                <Link to={'/home'}>
+                  <span className='text-2xl'>
+                    <FaHome></FaHome>
+                  </span>{' '}
+                  HOME
+                </Link>
+              </li>
+
+              <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
+                <Link to={'/our_shop'}>
+                  <span className='text-2xl'>
+                    <FaShoppingBag></FaShoppingBag>
+                  </span>{' '}
+                  OUR SHOP
+                </Link>
+              </li>
+
+              <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
+                <Link to={'/contact_us'}>
+                  <span className='text-2xl'>
+                    <FaPaperPlane></FaPaperPlane>
+                  </span>{' '}
+                  CONTACT
                 </Link>
               </li>
             </ul>
