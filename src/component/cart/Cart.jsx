@@ -41,7 +41,7 @@ const Cart = () => {
           {/* head */}
           <thead className='border-b-2 border-slate-600 pb-1'>
             <tr>
-              <th></th>
+              <th>#</th>
               <th>PICTUR</th>
               <th>NAME</th>
               <th>PRICE</th>

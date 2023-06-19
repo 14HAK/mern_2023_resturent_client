@@ -20,7 +20,8 @@ import useFetchCart from './component/Hooks/useFetchCart';
 const Dashboard = () => {
   const [, cart] = useFetchCart();
 
-  const adminUserRole = false;
+  // TODO: change before get genuine user role admin or user
+  const adminUserRole = true;
 
   return (
     <div className='grid grid-cols-12'>
