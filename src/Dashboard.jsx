@@ -27,7 +27,7 @@ const Dashboard = () => {
               Open
             </label>
           </div>
-          <div className='drawer-side'>
+          <div className='drawer-side h-[150%] overflow-y-auto'>
             <label htmlFor='my-drawer-2' className='drawer-overlay'></label>
             <ul className='menu p-4 w-80 h-full bg-slate-600 text-white'>
               <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
@@ -114,7 +114,7 @@ const Dashboard = () => {
           </div>
         </div>
       </header>
-      <main className='col-span-9 p-10 rounded-md'>
+      <main className='col-span-9 p-10 h-[100%] overflow-y-auto rounded-md'>
         <Outlet></Outlet>
       </main>
     </div>

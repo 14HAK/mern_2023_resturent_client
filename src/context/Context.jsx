@@ -36,6 +36,16 @@ const Context = ({ children }) => {
       if (user) {
         setUser(user);
         setLoading(false);
+        const userInfo = { email: user?.email, tokens: user?.accessToken };
+        fetch(`http://localhost:3000/users`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userInfo),
+        })
+          .then((res) => res.json())
+          .then((user) => console.log(user));
       } else {
         setUser();
       }
