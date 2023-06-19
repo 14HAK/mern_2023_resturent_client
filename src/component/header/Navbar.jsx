@@ -28,9 +28,15 @@ const Navbar = () => {
         <li className='hover:underline'>
           <Link to={'/contact_us'}>CONTACT-US</Link>
         </li>
-        <li className='hover:underline'>
-          <Link to={'/dashboard'}>DASHBOARD</Link>
-        </li>
+        {user ? (
+          <>
+            <li className='hover:underline'>
+              <Link to={'/dashboard'}>DASHBOARD</Link>
+            </li>
+          </>
+        ) : (
+          <></>
+        )}
         <li className='hover:underline'>
           <Link to={'/our_manu'}>OUR-MANU</Link>
         </li>

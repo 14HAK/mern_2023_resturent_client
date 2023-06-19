@@ -52,7 +52,7 @@ const Cart = () => {
           <tbody>
             {cart?.map((item, index) => (
               <>
-                <tr>
+                <tr key={index}>
                   <th>{index + 1}</th>
                   <td>
                     <div className='avatar'>

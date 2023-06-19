@@ -16,6 +16,11 @@ import PaymentHistory from '../component/paymentHistory/PaymentHistory';
 import AddReview from '../component/addReview/AddReview';
 import MyBooking from '../component/myBooking/MyBooking';
 import UserHome from '../component/userHome/UserHome';
+import AdminHome from '../component/adminHome/AdminHome';
+import AddItem from '../component/addItem/AddItem';
+import ManageItem from '../component/manageItem/ManageItem';
+import ManageBooking from '../component/manageBooking/ManageBooking';
+import UserList from '../component/userList/UserList';
 
 const router = createBrowserRouter([
   {
@@ -66,11 +71,35 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: '/dashboard',
         element: <Cart></Cart>,
+      },
+      {
+        path: '/dashboard/adminhome',
+        element: <AdminHome></AdminHome>,
+      },
+      {
+        path: '/dashboard/additem',
+        element: <AddItem></AddItem>,
+      },
+      {
+        path: '/dashboard/manageitem',
+        element: <ManageItem></ManageItem>,
+      },
+      {
+        path: '/dashboard/managebooking',
+        element: <ManageBooking></ManageBooking>,
+      },
+      {
+        path: '/dashboard/userlist',
+        element: <UserList></UserList>,
       },
       {
         path: '/dashboard/userhome',
@@ -86,7 +115,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/cart',
-        element: <Cart></Cart>,
+        element: (
+          <PrivateRoute>
+            <Cart></Cart>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/dashboard/addreview',
@@ -97,6 +130,10 @@ const router = createBrowserRouter([
         element: <MyBooking></MyBooking>,
       },
     ],
+  },
+  {
+    path: '*',
+    element: <h2 className='text-7xl text-red-700'>error page</h2>,
   },
 ]);
 

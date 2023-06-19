@@ -1,18 +1,26 @@
 import { Link, Outlet } from 'react-router-dom';
 import {
   FaCartPlus,
+  FaHamburger,
   FaHome,
   FaNewspaper,
   FaPaperPlane,
   FaRegCalendarCheck,
   FaRegStar,
   FaShoppingBag,
+  FaSwatchbook,
+  FaUser,
+  FaUserShield,
+  FaUsers,
+  FaUtensils,
   FaWallet,
 } from 'react-icons/fa';
 import useFetchCart from './component/Hooks/useFetchCart';
 
 const Dashboard = () => {
   const [, cart] = useFetchCart();
+
+  const adminUserRole = false;
 
   return (
     <div className='grid grid-cols-12'>
@@ -30,57 +38,105 @@ const Dashboard = () => {
           <div className='drawer-side h-[150%] overflow-y-auto'>
             <label htmlFor='my-drawer-2' className='drawer-overlay'></label>
             <ul className='menu p-4 w-80 h-full bg-slate-600 text-white'>
-              <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
-                <Link to={'/dashboard/userhome'}>
-                  <span className='text-2xl'>
-                    <FaHome></FaHome>
-                  </span>{' '}
-                  USER HOME
-                </Link>
-              </li>
-              <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
-                <Link to={'/dashboard/reservation'}>
-                  <span className='text-2xl'>
-                    <FaNewspaper></FaNewspaper>
-                  </span>{' '}
-                  RESERVATION
-                </Link>
-              </li>
-              <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
-                <Link to={'/dashboard/paymenthistory'}>
-                  <span className='text-2xl'>
-                    <FaWallet></FaWallet>
-                  </span>{' '}
-                  PAYMENT HISTORY
-                </Link>
-              </li>
-              <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
-                <Link to={'/dashboard/cart'}>
-                  <span className='relative text-2xl'>
-                    <FaCartPlus></FaCartPlus>
-                    <div className='badge absolute -top-2 bg-green-200 text-slate-700 font-mono -left-5'>
-                      +{cart?.length}
-                    </div>
-                  </span>{' '}
-                  MY CART
-                </Link>
-              </li>
-              <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
-                <Link to={'/dashboard/addreview'}>
-                  <span className='text-2xl'>
-                    <FaRegStar></FaRegStar>
-                  </span>{' '}
-                  ADD REVIEW
-                </Link>
-              </li>
-              <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
-                <Link to={'/dashboard/mybooking'}>
-                  <span className='text-2xl'>
-                    <FaRegCalendarCheck></FaRegCalendarCheck>
-                  </span>{' '}
-                  MY BOOKING
-                </Link>
-              </li>
+              {adminUserRole ? (
+                <>
+                  <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
+                    <Link to={'/dashboard/adminhome'}>
+                      <span className='text-2xl'>
+                        <FaUserShield></FaUserShield>
+                      </span>{' '}
+                      ADMIN
+                    </Link>
+                  </li>
+                  <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
+                    <Link to={'/dashboard/additem'}>
+                      <span className='text-2xl'>
+                        <FaUtensils></FaUtensils>
+                      </span>{' '}
+                      ADD ITEM
+                    </Link>
+                  </li>
+                  <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
+                    <Link to={'/dashboard/manageitem'}>
+                      <span className='text-2xl'>
+                        <FaHamburger></FaHamburger>
+                      </span>{' '}
+                      MANAGE ITEM
+                    </Link>
+                  </li>
+
+                  <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
+                    <Link to={'/dashboard/managebooking'}>
+                      <span className='text-2xl'>
+                        <FaSwatchbook></FaSwatchbook>
+                      </span>{' '}
+                      MANAGE BOOKING
+                    </Link>
+                  </li>
+                  <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
+                    <Link to={'/dashboard/userlist'}>
+                      <span className='text-2xl'>
+                        <FaUsers></FaUsers>
+                      </span>{' '}
+                      USER LIST
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
+                    <Link to={'/dashboard/userhome'}>
+                      <span className='text-2xl'>
+                        <FaUser></FaUser>
+                      </span>{' '}
+                      USER
+                    </Link>
+                  </li>
+                  <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
+                    <Link to={'/dashboard/reservation'}>
+                      <span className='text-2xl'>
+                        <FaNewspaper></FaNewspaper>
+                      </span>{' '}
+                      RESERVATION
+                    </Link>
+                  </li>
+                  <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
+                    <Link to={'/dashboard/paymenthistory'}>
+                      <span className='text-2xl'>
+                        <FaWallet></FaWallet>
+                      </span>{' '}
+                      PAYMENT HISTORY
+                    </Link>
+                  </li>
+                  <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
+                    <Link to={'/dashboard/cart'}>
+                      <span className='relative text-2xl'>
+                        <FaCartPlus></FaCartPlus>
+                        <div className='badge absolute -top-2 bg-green-200 text-slate-700 font-mono -left-5'>
+                          +{cart?.length}
+                        </div>
+                      </span>{' '}
+                      MY CART
+                    </Link>
+                  </li>
+                  <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
+                    <Link to={'/dashboard/addreview'}>
+                      <span className='text-2xl'>
+                        <FaRegStar></FaRegStar>
+                      </span>{' '}
+                      ADD REVIEW
+                    </Link>
+                  </li>
+                  <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
+                    <Link to={'/dashboard/mybooking'}>
+                      <span className='text-2xl'>
+                        <FaRegCalendarCheck></FaRegCalendarCheck>
+                      </span>{' '}
+                      MY BOOKING
+                    </Link>
+                  </li>
+                </>
+              )}
 
               <span className='h-[1px] w-full my-3 bg-white'></span>
 
