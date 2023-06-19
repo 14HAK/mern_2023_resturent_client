@@ -5,11 +5,13 @@ import {
   FaNewspaper,
   FaRegCalendarCheck,
   FaRegStar,
-  FaShoppingCart,
   FaWallet,
 } from 'react-icons/fa';
+import useFetchCart from './component/Hooks/useFetchCart';
 
 const Dashboard = () => {
+  const [, cart] = useFetchCart();
+
   return (
     <div className='grid grid-cols-12'>
       <header className='col-span-3'>
@@ -52,8 +54,11 @@ const Dashboard = () => {
               </li>
               <li className='hover:bg-slate-200 mb-2 hover:text-slate-800 font-semibold rounded-md duration-500'>
                 <Link to={'/dashboard/cart'}>
-                  <span className='text-2xl'>
+                  <span className='relative text-2xl'>
                     <FaCartPlus></FaCartPlus>
+                    <div className='badge absolute -top-2 bg-green-200 text-slate-700 font-mono -left-5'>
+                      +{cart?.length}
+                    </div>
                   </span>{' '}
                   MY CART
                 </Link>
