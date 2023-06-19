@@ -1,13 +1,30 @@
 import { useQuery } from '@tanstack/react-query';
+import { FaTrashAlt, FaUserCheck, FaUserCog } from 'react-icons/fa';
 
 const UserList = () => {
-  const { data } = useQuery({
+  const { data, refetch } = useQuery({
     queryKey: ['repoData'],
     queryFn: () =>
       fetch('http://localhost:3000/users').then((res) => res.json()),
   });
 
-  console.log(data);
+  const handleDeleteUser = () => {
+    console.log('delete user call!');
+  };
+
+  const handlePatchUpdateUser = (user) => {
+    const userRole = { id: user?._id, role: user?.role };
+
+    fetch(`http://localhost:3000/user_role/${JSON.stringify(userRole)}`, {
+      method: 'PATCH',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          refetch();
+        }
+      });
+  };
 
   return (
     <div>
@@ -18,20 +35,49 @@ const UserList = () => {
             <tr className='text-md text-slate-700'>
               <th>#</th>
               <th>EMAIL</th>
-              <th>_ID</th>
-              <th>OTHERS</th>
+              <th>ID</th>
+              <th>ROLE</th>
+              <th>DELETE USER</th>
             </tr>
           </thead>
           <tbody>
-            {data?.map((item, index) => (
-              <>
-                <tr key={index}>
-                  <th>{index + 1}</th>
-                  <td>{item?.email}</td>
-                  <td>{item?._id}</td>
-                  <td>$$</td>
-                </tr>
-              </>
+            {data?.map((user, index) => (
+              <tr key={index}>
+                <th>{index + 1}</th>
+                <td>{user?.email}</td>
+                <td>{user?._id}</td>
+                {user?.role === 'admin' ? (
+                  <>
+                    <td>
+                      <button
+                        onClick={() => handlePatchUpdateUser(user)}
+                        className='bg-slate-200 hover:bg-green-700 duration-300 p-3 rounded-full  hover:text-white'
+                      >
+                        <FaUserCog></FaUserCog>
+                      </button>
+                    </td>
+                  </>
+                ) : (
+                  <>
+                    <td>
+                      <button
+                        onClick={() => handlePatchUpdateUser(user)}
+                        className='bg-slate-200 hover:bg-green-700 duration-300 p-3 rounded-full  hover:text-white'
+                      >
+                        <FaUserCheck></FaUserCheck>
+                      </button>
+                    </td>
+                  </>
+                )}
+                <td>
+                  <button
+                    onClick={() => handleDeleteUser()}
+                    className='bg-slate-200 duration-300 p-3 rounded-full hover:bg-red-600 hover:text-white'
+                  >
+                    <FaTrashAlt></FaTrashAlt>
+                  </button>
+                </td>
+              </tr>
             ))}
           </tbody>
         </table>
