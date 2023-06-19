@@ -2,9 +2,11 @@ import { useContext } from 'react';
 import { MyContext } from '../../context/Context';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useSavedUser from '../Hooks/useSavedUser';
 
 const Signin = () => {
   const { setUser, SignInWithEmailPassword } = useContext(MyContext);
+  const [userSavedFetch] = useSavedUser();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -21,7 +23,8 @@ const Signin = () => {
   const onSubmit = (data) => {
     SignInWithEmailPassword(data.email, data.password)
       .then((result) => {
-        setUser(result.user);
+        userSavedFetch(result?.user);
+        setUser(result?.user);
         reset();
         navigate(from, { replace: true });
       })
