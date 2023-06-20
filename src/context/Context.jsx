@@ -32,9 +32,9 @@ const Context = ({ children }) => {
 
   //user management
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
         setLoading(false);
       } else {
         setUser();
@@ -45,16 +45,24 @@ const Context = ({ children }) => {
     };
   }, [auth]);
 
-  //get all cart data
-  // useEffect(() => {
-  //   if (user) {
-  //     fetch(`http://localhost:3000/client/cart?user=${user?.email}`)
-  //       .then((res) => res.json())
-  //       .then((data) => setCart(data));
-  //   } else {
-  //     setCart(null);
-  //   }
-  // }, [user]);
+  if (user) {
+    fetch('http://localhost:3000/jwt', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({ user: user?.email }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          console.log(data);
+          localStorage.setItem('access-token', data?.token);
+        }
+      });
+  } else {
+    localStorage.removeItem('access-token');
+  }
 
   const contextData = {
     user,
