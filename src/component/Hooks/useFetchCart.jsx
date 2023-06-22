@@ -9,11 +9,12 @@ const useFetchCart = () => {
   const [axiosSecure] = useAxiosSecure();
 
   const { refetch, data: cart = [] } = useQuery({
-    queryKey: ['carts', user?.email],
+    queryKey: ['cart', user?.email],
     queryFn: async () => {
-      axiosSecure
-        .post(`/client/cart?user=${user?.email}`)
-        .then((res) => res.data.data);
+      const response = await axiosSecure.get(
+        `/client/cart?user=${user?.email}`
+      );
+      return response?.data;
     },
   });
 
