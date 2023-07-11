@@ -5,7 +5,9 @@ const UserList = () => {
   const { data, refetch } = useQuery({
     queryKey: ['repoData'],
     queryFn: () =>
-      fetch('http://localhost:3000/users').then((res) => res.json()),
+      fetch('https://mern-2023-resturent-server.vercel.app/users').then((res) =>
+        res.json()
+      ),
   });
 
   const handleDeleteUser = () => {
@@ -15,9 +17,14 @@ const UserList = () => {
   const handlePatchUpdateUser = (user) => {
     const userRole = { id: user?._id, role: user?.role };
 
-    fetch(`http://localhost:3000/user_role/${JSON.stringify(userRole)}`, {
-      method: 'PATCH',
-    })
+    fetch(
+      `https://mern-2023-resturent-server.vercel.app/user_role/${JSON.stringify(
+        userRole
+      )}`,
+      {
+        method: 'PATCH',
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data) {

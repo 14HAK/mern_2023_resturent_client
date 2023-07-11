@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const useAxiosSecure = () => {
   const axiosSecure = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://mern-2023-resturent-server.vercel.app',
   });
 
   // Request interceptor

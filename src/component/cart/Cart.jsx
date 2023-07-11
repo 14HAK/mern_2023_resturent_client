@@ -9,7 +9,7 @@ const Cart = () => {
   }, 0);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:3000/client/cart/${id}`, {
+    fetch(`https://mern-2023-resturent-server.vercel.app/client/cart/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())

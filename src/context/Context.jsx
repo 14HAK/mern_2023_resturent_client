@@ -46,7 +46,7 @@ const Context = ({ children }) => {
   }, [auth]);
 
   if (user) {
-    fetch('http://localhost:3000/jwt', {
+    fetch('https://mern-2023-resturent-server.vercel.app/jwt', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

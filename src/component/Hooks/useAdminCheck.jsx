@@ -16,7 +16,7 @@
 //     enabled: cart,
 //     queryFn: async () => {
 //       const response = await axios.post(
-//         `http://localhost:3000/apollo?user=${user?.email}`,
+//         `https://mern-2023-resturent-server.vercel.app/apollo?user=${user?.email}`,
 //         {
 //           method: 'POST',
 //           headers: {

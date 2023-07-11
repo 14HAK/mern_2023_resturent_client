@@ -10,7 +10,7 @@ const ManuCard = ({ data }) => {
     if (user) {
       delete itemData['_id'];
       itemData['user'] = user?.email;
-      fetch(`http://localhost:3000/client/cart`, {
+      fetch(`https://mern-2023-resturent-server.vercel.app/client/cart`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
